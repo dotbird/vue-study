@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--view层，模板-->
+<div id="app">
+    单选框：
+    <input type="checkbox" id="check" v-model="checked">
+    <label for="check">{{checked}}</label>
+</div>
+<br>
+<div id="app2">
+    多选框：
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    &nbsp;&nbsp;
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="bob" value="Bob" v-model="checkedNames">
+    &nbsp;&nbsp;
+    <label for="bob">Bob</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    &nbsp;&nbsp;
+    <label for="mike">Mike</label>
+    <span>选中的值：{{checkedNames}}</span>
+
+</div>
+
+
+<!--1.导入Vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        /*Model：数据*/
+        data: {
+            checked: false
+        }
+    });
+
+    var vm2 = new Vue({
+        el:"#app2",
+        /*Model：数据*/
+        data: {
+            checkedNames: []
+        }
+    });
+
+</script>
+
+</body>
+</html>

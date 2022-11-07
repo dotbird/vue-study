@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--1.导入vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <todo>
+        <todo-title slot="todo-title" v-bind:title="title"></todo-title>
+        <todo-items slot="todo-items" v-for="item in todoItems" v-bind:item="item"></todo-items>
+    </todo>
+</div>
+<script>
+    //slot 插槽 这个组件要定义在前面不然出不来数据
+    Vue.component("todo", {
+        template: '<div>\
+                    <slot name="todo-title"></slot>\
+                    <ul>\
+                    <slot name="todo-items"></slot>\
+                    </ul>\
+                <div>'
+    });
+    Vue.component("todo-title", {
+        //属性
+        props: ['title'],
+        template: '<div>{{title}}</div>'
+    });
+    Vue.component("todo-items", {
+        props: ['item'],
+        template: '<li>{{item}}</li>'
+    });
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            //标题
+            title: "图书馆系列图书",
+            //列表
+            todoItems: ['三国演义', '红楼梦', '西游记', '水浒传']
+        }
+    });
+</script>
+</body>
+</html>
